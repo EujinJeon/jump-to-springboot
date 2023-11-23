@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>질문게시판</title>
+</head>
+<body>
+    <h2>질문 게시판</h2>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <div class="container-fluid my-3">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일지</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="question, loop : ${questionList}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+                </td>
+                <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
