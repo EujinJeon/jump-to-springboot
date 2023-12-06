@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-    <title>질문등록</title>
-</head>
-<body>
-<div class="container">
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container">
+    <script>
+        document.title="질문등록";
+    </script>
     <h5 class="my-3 border-bottom pb-2">질문등록</h5>
     <form th:action="@{/question/create}" th:object="${questionForm}" method="post">
-        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
-            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
-        </div>
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
         <div class="mb-3">
             <label for="subject" class="form-label">제 목</label>
             <input type="text" th:field="*{subject}" class="form-control">
@@ -25,5 +17,4 @@
 <input type="submit" value="저장하기" class="btn btn-primary my-2">
 </form>
 </div>
-</body>
 </html>

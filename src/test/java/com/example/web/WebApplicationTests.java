@@ -4,6 +4,7 @@ import com.example.web.domain.entity.Answer;
 import com.example.web.domain.entity.AnswerRepository;
 import com.example.web.domain.entity.Question;
 import com.example.web.domain.entity.QuestionRepository;
+import com.example.web.domain.service.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ class WebApplicationTests {
 
     @Autowired
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private QuestionService questionService;
 
     // 데이터 베이스에 데이터를 저장하는 테스트 코드
     @Test
@@ -164,5 +168,12 @@ class WebApplicationTests {
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
     }
 
-
+    @Test
+    void initTestData() {
+        for (int i = 1; i <= 300; i++){
+            String subject = String.format("테스트 데이터입니다. : [%03d]", i);
+            String content = "No content";
+            this.questionService.create(subject, content);
+        }
+    }
 }

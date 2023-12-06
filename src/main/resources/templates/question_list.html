@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>질문게시판</title>
-</head>
-<body>
-    <h2>질문 게시판</h2>
-    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-    <div class="container-fluid my-3">
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content" class="container-fluid my-3">
+        <script>
+            document.title = "질문게시판"
+        </script>
     <table class="table">
         <thead class="table-dark">
             <tr>
@@ -28,5 +23,4 @@
     </table>
         <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
     </div>
-</body>
 </html>
