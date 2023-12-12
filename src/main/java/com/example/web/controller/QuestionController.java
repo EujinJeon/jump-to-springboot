@@ -1,7 +1,6 @@
 package com.example.web.controller;
 
 import com.example.web.domain.entity.Question;
-import com.example.web.domain.entity.QuestionRepository;
 import com.example.web.domain.service.QuestionService;
 import com.example.web.validation.AnswerForm;
 import com.example.web.validation.QuestionForm;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @RequestMapping("/question")
 @RequiredArgsConstructor
 @Controller
