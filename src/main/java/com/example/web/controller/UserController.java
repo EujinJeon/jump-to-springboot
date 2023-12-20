@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
     private final UserService userService;
 
     @GetMapping("/signup")
@@ -24,9 +23,8 @@ public class UserController {
 
     @PostMapping("/signup")
     public String signup(@Valid UserCreateForm userCreateForm,
-                         BindingResult bindingResult)
-    {
-        if(bindingResult.hasErrors()){
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
             return "signup_form";
         }
 
@@ -38,7 +36,6 @@ public class UserController {
 
         userService.create(userCreateForm.getUsername(), userCreateForm.getEmail(),
                 userCreateForm.getPassword1());
-        return"redirect:/";
+        return "redirect:/";
     }
-
 }
